@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="Calendar.css">
+    <link rel="stylesheet" href="Tooltip.css">
+</head>
+<body>
+    <div class="MainContainer">
+        <div class="calendarParent" style="position:absolute;left:250px; top:250px; width: 400px; height: 350px;"></div>
+    </div>
+
+<script src="Calendar.js"></script>
+<script>
+    let calendar = new Calendar(".calendarParent",{
+        lang: "en",
+        firstDayOfWeek: "mon",
+        rowHeight: 55,
+        viewType: "monthly", //monthly || weekly, default: monthly
+        onMOver: function (e,cell,events,year,month,day,hours) {
+            // console.log(cell,day,month,year,events);
+            let div = document.createElement("div");
+            div.textContent="tooltip";
+            if(cell.classList.contains("selected-day")) // current month days
+                calendar.showTooltip(cell, div); // cell to show tooltip and content as html element
+        },
+        onMOut: function (e,cell,events,year,month,day,hours) {
+            // console.log(cell,day,month,year);
+            calendar.hideTooltip();
+        },
+        onMClick: function (e,cell,events,year,month,day,hours) {
+            // console.log(cell,day,month,year,events);
+            // calendar.deselectAllDay(); // remove all selected cell styles
+            if(cell.classList.contains("selected-day")) // is selected
+                calendar.deselectDay(cell); // (selectedCell)
+            else if(cell.classList.contains("calendar-day")) // current month days
+                calendar.selectDay(cell, false); // (selectedCell,deselectAll) // deselectAll to set only one element each time
+        },
+        onMdblClick: function (e,cell,events,year,month,day,hours) {
+            console.log(cell,hours,day,month,year,events);
+            // calendar.deselectAllDay(); // remove all selected cell styles
+            // calendar.selectDay(cell, true); // (selectedCell,deselectAll) // deselectAll to set only one element each time
+        },
+        info: function (e, type) { // mouseover,mouseenter,mouseout,click,dblclick on info. set false to remove info
+            console.log(e,type);
+        }
+    });
+    calendar.addEvent({year:2018,month:11,day:9},"ilk event", {color:"#00ab9d"});
+    calendar.addEvent({year:2018,month:11,day:9},"ikinci event", {color:"#ff4647"});
+    calendar.addEvent({year:2018,month:11,day:9},"diğer event", {color:"#eee23a"});
+    calendar.addEvent({year:2018,month:11,day:12},"diğer event 2", {color:"#afa98a"});
+    calendar.addEvent({year:2018,month:11,day:19, hours: "10:00-12:00"},"diğer event 3", {color:"#eee"});
+
+    // calendar.setView("weekly"); //monthly || weekly
+    // calendar.setLang("tr"); // eng || tr
+    // calendar.setDate({year:2018,month:12,day:19}); // month 1-12
+</script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+.calendar-table{
+    width: 100%!important;
+    height: 100%!important;
+    table-layout:fixed;
+}
+.calendar-previous{
+    float: left;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.calendar-card{
+    position: relative;
+}
+.calendar-datetime{
+    right: 0;
+    position: absolute;
+}
+.calendar-forward{
+    float: right;
+    cursor: pointer;
+}
+.calendar-headerInfo{
+    position: relative;
+    width: 66%;
+    margin: auto;
+    overflow: hidden;
+}
+.calendar-header{
+    position: relative;
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+}
+.calendar-info{
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+.calendar-headerInfo .todayInfo{
+    position: relative;
+    float: left;
+    width: calc(100% - 40px);
+    margin: auto;
+    text-align: center;
+    font-size: 1.5em;
+}
+.calendar-table td>span{
+    font-size: 1.3em;
+}
+.calendar-cardHeader{
+    text-align: center;
+    margin: auto auto;
+}
+.calendar-table th{
+    padding: 0.5em;
+}
+.calendar-table td:not(.hour):not(.event):not(.empty):hover{
+    border: 2px solid gray;
+    border-radius: 250px;
+    cursor: pointer;
+}
+.calendar-table td.event{
+    cursor: pointer;
+}
+.calendar-card ul *{
+    font-size: 0.8em;
+}
+.calendar-card ul {list-style: none}
+.calendar-card li::before {content: "•";
+    display: inline-block;
+    width: 0.5em;
+    margin-left: -2em
+}
+.calendar-table{
+    overflow-y: auto;
+    overflow-x: hidden;
+    /*display: block;*/
+    max-height: 600px   ;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+.hide{display: none}
+.calendar-table td:not(.hour):hover>span{
+    font-size: 1.4em;
+    font-weight: bold;
+}
+.calendar-table td:not(.empty):not(.event){
+    border-radius: 50%;
+    display:table-cell;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.calendar-table tr{
+    max-height: 15px!important;
+}
+.selected-day{
+    border: 2px solid darkcyan!important;
+    border-radius: 50px;
+}
+.selected-day>span{
+    font-size: 1.4em;
+    font-weight: bold;
+}
+.calendar-pastmonthday,.calendar-nextmonthday{
+    color: darkgray;
+    border-radius: 50px;
+}
+.circle_event {
+    border-radius: 50%;
+    width: 5px;
+    height: 5px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: blue;
+}
+.events{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+
+body,html{margin:0;padding:0;}
+.calendar-table tbody{
+    overflow-y: scroll;
+    /*overflow-x: hidden;*/
+    /*display: block;*/
+    max-height: 100px;
+    /*overflow-x: hidden;*/
+}
+
+
